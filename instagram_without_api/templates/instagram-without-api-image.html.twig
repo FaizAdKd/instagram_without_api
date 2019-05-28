@@ -12,6 +12,9 @@
  */
 #}
 {% spaceless %}
+{% if data %}
+  <div class="block-desc">{{description}}</div>
+{% endif %}
   {% if data %}
     <ul class="iwa">
       {% for item in data %}

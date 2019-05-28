@@ -45,6 +45,12 @@ class InstagramWithoutApi extends BlockBase {
       '#default_value' => $this->configuration['name'],
     );
 
+    $form['description'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('description'),
+      '#default_value' => $this->configuration['description'],
+    );
+
     $form['count'] = array(
       '#type' => 'number',
       '#title' => $this->t('Number of images to display'),
@@ -82,6 +88,7 @@ class InstagramWithoutApi extends BlockBase {
     }
     else {
       $this->configuration['name'] = $form_state->getValue('name');
+      $this->configuration['description'] = $form_state->getValue('description');
       $this->configuration['count'] = $form_state->getValue('count');
       $this->configuration['width'] = $form_state->getValue('width');
       $this->configuration['height'] = $form_state->getValue('height');
@@ -138,6 +145,7 @@ class InstagramWithoutApi extends BlockBase {
         $build = [
           '#theme' => 'instagram_without_api_image',
           '#data' => $data,
+          '#description' => $this->configuration['description'],
           '#width' => $this->configuration['width'],
           '#height' => $this->configuration['height'],      
         ]; 
